@@ -1,0 +1,10 @@
+transform:
+  outputs:
+    dev:
+      account: '{{ cookiecutter.snowflake_account }}'
+      role: '{{ cookiecutter.snowflake_role }}'
+      threads: '{{ cookiecutter.snowflake_threads }}'
+      type: snowflake
+      user: '{{ cookiecutter.snowflake_user }}'
+      warehouse: '{{ cookiecutter.snowflake_warehouse }}'
+  target: dev

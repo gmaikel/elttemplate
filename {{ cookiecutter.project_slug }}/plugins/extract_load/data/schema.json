@@ -1,0 +1,16 @@
+{
+  "crypto": {
+    "prices": {
+      "url": "https://api.coincap.io/v2/assets",
+      "headers": {},
+      "params": {}
+    }
+  },
+  "forex": {
+    "rates": {
+      "url": "https://api.coincap.io/v2/rates",
+      "headers": {},
+      "params": {}
+    }
+  }
+}

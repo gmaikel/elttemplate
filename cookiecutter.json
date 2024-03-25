@@ -1,0 +1,13 @@
+{
+  "project_name": "Cookiecutter Website Simple",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+  "owner": "Anonymous",
+  "python_version": ["3.10"],
+  "environment_manager": ["conda", "venv"],
+  "env_name": "my_custom_env",
+  "snowflake_account": "Your Snowflake account",
+  "snowflake_user": "Your Snowflake username",
+  "snowflake_role": "Your Snowflake role",
+  "snowflake_warehouse": "Your Snowflake warehouse",
+  "snowflake_threads": 4
+}
