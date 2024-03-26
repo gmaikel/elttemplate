@@ -5,5 +5,7 @@ tqdm
 snowflake-connector-python
 dbt-snowflake
 
+selenium
+
 astronomer-cosmos
 apache-airflow-providers-snowflake

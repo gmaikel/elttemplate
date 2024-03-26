@@ -5,7 +5,7 @@ import subprocess
 def docker_build():
     try:
         # Exécute la commande docker build
-        subprocess.run(["docker", "build", ".", "--tag", "customising_airflow:latest"], check=True)
+        subprocess.run(["docker", "build", ".", "--tag", "{{cookiecutter.project_slug}}:latest"], check=True)
         print("La construction de l'image Docker a été effectuée avec succès.")
     except subprocess.CalledProcessError as e:
         print(f"Une erreur s'est produite lors de la construction de l'image Docker : {e}")
