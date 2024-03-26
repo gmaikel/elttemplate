@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 import os
+import json
 
 from airflow import DAG
 from airflow.operators.empty import EmptyOperator
@@ -8,8 +9,9 @@ from airflow.utils.task_group import TaskGroup
 from cosmos.profiles import SnowflakeUserPasswordProfileMapping
 from cosmos import ProfileConfig, ProjectConfig, DbtTaskGroup, ExecutionConfig
 
-from extract_load.utils import ExtractData, LoadData
+from extract_load.utils import ExtractData, LoadData, DATABASE_SCHEMA_PATH
 
+SCHEMA = json.load(open(DATABASE_SCHEMA_PATH, 'r'))
 
 def extract_schema(schema_name: str) -> None:
     extract_data = ExtractData(

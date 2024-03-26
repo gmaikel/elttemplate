@@ -8,6 +8,7 @@
   "snowflake_role": "Your Snowflake role",
   "snowflake_warehouse": "Your Snowflake warehouse",
   "snowflake_db_load": "Your Snowflake database for loading data",
+  "snowflake_db_transform": "Your Snowflake database for transforming data",
   "_copy_without_render": [
         "dags/transform"
     ]
