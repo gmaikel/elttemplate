@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: crypto
+    database: l_exchange_db
+    schema: crypto
+    tables:
+      - name: prices
+        description: first source data

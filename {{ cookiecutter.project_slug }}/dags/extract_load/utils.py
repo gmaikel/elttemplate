@@ -9,7 +9,7 @@ from tqdm import tqdm
 from airflow.models import Variable
 
 
-DATA_PATH = Path('/usr/local/airflow/plugins/extract_load/data')
+DATA_PATH = Path('/opt/airflow/dags/extract_load/data')
 DATABASE_SCHEMA_PATH = DATA_PATH / 'schema.json'
 
 

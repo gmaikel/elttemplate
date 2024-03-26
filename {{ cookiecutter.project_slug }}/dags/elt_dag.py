@@ -8,7 +8,7 @@ from airflow.utils.task_group import TaskGroup
 from cosmos.profiles import SnowflakeUserPasswordProfileMapping
 from cosmos import ProfileConfig, ProjectConfig, DbtTaskGroup, ExecutionConfig
 
-from plugins.extract_load.utils import ExtractData, LoadData
+from extract_load.utils import ExtractData, LoadData
 
 
 def extract_schema(schema_name: str) -> None:
@@ -36,7 +36,7 @@ profile_config = ProfileConfig(
 )
 
 default_args = {
-    'owner': 'Maikel G',
+    'owner': '{{cookiecutter.owner}}',
     'retries': 1,
     'retry_delay': timedelta(minutes=5)
 }
@@ -81,7 +81,7 @@ with DAG(
 
     dbt_transform = DbtTaskGroup(
         group_id='dbt_transform',
-        project_config=ProjectConfig("/usr/local/airflow/plugins/transform"),
+        project_config=ProjectConfig("/opt/airflow/dags/transform"),
         profile_config=profile_config,
         execution_config=ExecutionConfig(dbt_executable_path=f"{os.environ['AIRFLOW_HOME']}/dbt_venv/bin/dbt"),
         operator_args={"install_deps": True},

@@ -9,5 +9,8 @@
   "snowflake_user": "Your Snowflake username",
   "snowflake_role": "Your Snowflake role",
   "snowflake_warehouse": "Your Snowflake warehouse",
-  "snowflake_threads": 4
+  "snowflake_threads": 4,
+  "_copy_without_render": [
+        "dags/transform"
+    ]
 }
