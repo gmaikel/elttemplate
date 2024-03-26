@@ -125,9 +125,9 @@ class LoadData(DirManagement):
 
 @dataclass
 class DbtProfilesParameters:
-    account: str = Variable.get("account")
-    user: str = Variable.get('user')
+    account: str = '{{cookiecutter.snowflake_account}}'
+    user: str = '{{cookiecutter.snowflake_user}}'
     password: str = Variable.get('password')
-    warehouse: str = Variable.get('warehouse')
-    database: str = Variable.get('database')
-    role: str = Variable.get('role')
+    warehouse: str = '{{cookiecutter.snowflake_warehouse}}'
+    database: str = '{{cookiecutter.snowflake_db_load}}'
+    role: str = '{{cookiecutter.snowflake_role}}'

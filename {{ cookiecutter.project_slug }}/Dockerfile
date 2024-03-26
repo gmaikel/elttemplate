@@ -1,4 +1,4 @@
-FROM apache/airflow:2.8.3
+FROM apache/airflow:{{cookiecutter.airflow_version}}
 
 COPY requirements.txt /requirements.txt
 

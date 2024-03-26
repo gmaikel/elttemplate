@@ -11,5 +11,5 @@ airflow.cfg
 airflow.db
 .idea
 
-plugins/extract-load/data/crypto
-plugins/extract-load/data/forex
+dags/extract-load/data/crypto
+dags/extract-load/data/forex
