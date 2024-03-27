@@ -9,7 +9,7 @@ from airflow.utils.task_group import TaskGroup
 from cosmos.profiles import SnowflakeUserPasswordProfileMapping
 from cosmos import ProfileConfig, ProjectConfig, DbtTaskGroup, ExecutionConfig
 
-from extract_load.utils import ExtractData, LoadData, DATABASE_SCHEMA_PATH
+from extract_load.utils import ExtractData, LoadData, DATABASE_SCHEMA_PATH, DbtProfilesParameters
 
 SCHEMA = json.load(open(DATABASE_SCHEMA_PATH, 'r'))
 
@@ -32,8 +32,15 @@ profile_config = ProfileConfig(
     target_name='dev',
     profile_mapping=SnowflakeUserPasswordProfileMapping(
         conn_id="db_conn",
-        profile_args={"database": "t_exchange_db",
-                      "schema": "dbt_transform"},
+        profile_args={
+            "account": "{{cookiecutter.snowflake_account}}",
+            "user": "{{cookiecutter.snowflake_user}}",
+            "password": DbtProfilesParameters.password,
+            "database": "{{cookiecutter.snowflake_db_transform}}",
+            "warehouse": "{{cookiecutter.snowflake_warehouse}}",
+            "schema": "dbt_transform",
+            "role": "{{cookiecutter.snowflake_role}}"
+        },
     )
 )
 
@@ -85,7 +92,7 @@ with DAG(
         group_id='dbt_transform',
         project_config=ProjectConfig("/opt/airflow/dags/transform"),
         profile_config=profile_config,
-        execution_config=ExecutionConfig(dbt_executable_path=f"{os.environ['AIRFLOW_HOME']}/dbt_venv/bin/dbt"),
+        execution_config=ExecutionConfig(dbt_executable_path="/home/airflow/.local/bin/dbt"),
         operator_args={"install_deps": True},
     )
 

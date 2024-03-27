@@ -28,9 +28,10 @@ GRANT ALL ON DATABASE {{cookiecutter.snowflake_db_load}} TO ROLE {{cookiecutter.
 GRANT ALL ON DATABASE {{cookiecutter.snowflake_db_transform}} TO ROLE {{cookiecutter.snowflake_role}};
 ```
 
-## Usage
+**Create your different tables in 
+the load database {{cookiecutter.snowflake_db_load}}**
 
-### Extract and Load (EL)
+## Extract and Load (EL)
 
 In the `dags/extract_load/data/schema.json` file, simply add your data schemas for the `Load` part, as shown:
 
@@ -58,11 +59,11 @@ load_forex = PythonOperator(
         )
 ```
 
-### Transform (T)
+## Transform (T)
 
 Configure your dbt project and create models in the dbt project located in the `dags/transforms/models` folder.
 
-### Launching
+## Launching
 
 ```bash
 docker compose up -d
@@ -71,8 +72,6 @@ docker compose up -d
 Then access the [Airflow UI](http://localhost:8080/) (both username and password are 'airflow') and create variables and connections:
 
 - **Creating the variable `password` (Snowflake password)**: Admin -> Variables
-
-- **Creating a Snowflake connection `db_conn`**: Admin -> Connections
 
 Finally, trigger your DAG.
 
